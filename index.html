@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Seul Photo Manager certifié au Québec. Numérisation de photos, négatifs, diapositives, films et vidéos. Commerce familial depuis 1937.">
+<title>Photo Service Montréal | Numérisation & Archivage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+:root{--red:#C8181A;--dark:#111;--white:#fff;--gray:#f4f4f4;--gray2:#e8e8e8;--text:#222;--text2:#555;--font:'Inter Tight','Helvetica Neue',Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--text);background:#fff;font-size:16px;line-height:1.6}
+
+/* ── TOP BAR ── */
+.topbar{background:var(--red);display:flex;justify-content:space-between;align-items:center;padding:6px 24px;font-size:12px;color:#fff;flex-wrap:wrap;gap:4px}
+.topbar a{color:#fff;text-decoration:none}
+.topbar .center{text-align:center;flex:1;font-weight:500}
+.topbar .right{display:flex;gap:12px;align-items:center}
+.topbar .right a{font-size:12px}
+.lang-sw{display:flex;gap:6px}
+.lang-sw a{color:#fff;text-decoration:none;font-size:11px;padding:1px 5px;border:1px solid rgba(255,255,255,.4);border-radius:2px}
+.lang-sw a.on{background:rgba(255,255,255,.2)}
+
+/* ── NAV ── */
+nav{background:var(--dark);border-bottom:2px solid var(--red)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer}
+.logo-box{border:2px solid var(--red);padding:5px 11px}
+.logo-title{color:#fff;font-size:15px;font-weight:700;letter-spacing:2px;display:block}
+.logo-sub{color:#aaa;font-size:9px;letter-spacing:2.5px;display:block}
+.nav-links{display:flex;align-items:center}
+.nav-links a{color:#ccc;text-decoration:none;font-size:14px;font-weight:500;padding:0 18px;height:64px;display:flex;align-items:center;border-right:1px solid #222;transition:.2s;cursor:pointer}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(200,24,26,.15)}
+.nav-cta{background:var(--red)!important;color:#fff!important;margin-left:12px;border-right:none!important;padding:0 20px!important;border-radius:3px}
+.nav-cta:hover{background:#a51416!important}
+
+/* ── PAGES ── */
+.pg{display:none}.pg.on{display:block}
+
+/* Accueil visible par défaut sauf si une autre page est ciblée */
+
+
+/* ── PAGE BANNER ── */
+.banner{position:relative;height:280px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
+.banner img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.banner::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.55);z-index:1;pointer-events:none}
+.banner-content{position:relative;z-index:2;padding:0 2rem;max-width:860px}
+.banner-bc{font-size:12px;color:rgba(255,255,255,.7);margin-bottom:.75rem}
+.banner-bc a{color:rgba(255,255,255,.7);text-decoration:none}
+.banner-bc a:hover{color:#fff}
+.banner-bc span{margin:0 5px}
+.banner h1{color:#fff;font-size:clamp(28px,4vw,46px);font-weight:700;line-height:1.2;margin-bottom:.75rem}
+.banner p{color:rgba(255,255,255,.85);font-size:15px;line-height:1.7;max-width:700px;margin:0 auto}
+
+/* ── SUB-NAV ── */
+.subnav{background:var(--dark);border-bottom:1px solid #2a2a2a}
+.subnav-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:center;gap:0}
+.subnav a{color:#bbb;text-decoration:none;font-size:14px;padding:14px 28px;display:inline-block;border-right:1px solid #2a2a2a;transition:.2s;cursor:pointer}
+.subnav a:hover,.subnav a.on{color:#fff;background:rgba(200,24,26,.2)}
+
+/* ── HERO ACCUEIL ── */
+.hero{position:relative;min-height:420px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.62);z-index:1;pointer-events:none}
+.hero-in{position:relative;z-index:3;padding:4rem 2rem;max-width:780px}
+.eyebrow{display:inline-block;background:rgba(200,24,26,.15);border:1px solid rgba(200,24,26,.5);color:#ff6b6b;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.25rem;padding:6px 16px;border-radius:99px}
+.hero h1{color:#fff;font-size:clamp(28px,4vw,50px);font-weight:700;line-height:1.2;margin-bottom:1rem}
+.hero h1 em{color:var(--red);font-style:normal}
+.hero p{color:rgba(255,255,255,.85);font-size:17px;margin-bottom:2rem;line-height:1.7}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-r{background:var(--red);color:#fff;padding:13px 28px;border-radius:3px;text-decoration:none;font-size:14px;font-weight:600;display:inline-block;transition:.2s;cursor:pointer;border:none}
+.btn-r:hover{background:#a51416}
+.btn-o{background:transparent;color:#fff;padding:12px 26px;border-radius:3px;border:2px solid rgba(255,255,255,.6);text-decoration:none;font-size:14px;font-weight:500;display:inline-block;transition:.2s;cursor:pointer}
+.btn-o:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+
+/* ── ALERT BAR ── */
+.alertbar{background:#1a0a0a;border-bottom:1px solid #3a1010;text-align:center;padding:8px 1rem;font-size:13px;color:#e8a0a0}
+.alertbar a{color:var(--red)}
+
+/* ── SECTIONS ── */
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+section{padding:4rem 0}
+.sec-label{font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:.5rem}
+.sec-h{font-size:clamp(24px,3vw,36px);font-weight:700;color:var(--text);margin-bottom:.75rem;line-height:1.2}
+.sec-sub{color:var(--text2);font-size:16px;max-width:620px}
+
+/* ── 2-COL LAYOUT ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start;margin:2rem 0}
+.two-col.reverse{direction:rtl}.two-col.reverse>*{direction:ltr}
+.two-col img{width:100%;height:340px;object-fit:cover;border-radius:4px;display:block}
+.col-txt h2{font-size:clamp(22px,2.5vw,32px);font-weight:700;margin-bottom:.75rem;line-height:1.2}
+.col-txt p{font-size:15px;color:var(--text2);line-height:1.75;margin-bottom:1rem}
+.col-txt ul{margin-left:1.25rem;font-size:14px;color:var(--text2);line-height:1.8}
+.col-txt ul li{margin-bottom:.3rem}
+.col-txt strong{color:var(--text)}
+
+/* ── SERVICE GRID ── */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-top:2rem}
+.svc-card{border:1px solid var(--gray2);border-radius:4px;overflow:hidden;cursor:pointer;transition:.2s;text-decoration:none;color:inherit;display:block}
+.svc-card:hover{border-color:var(--red);box-shadow:0 4px 20px rgba(200,24,26,.1);transform:translateY(-2px)}
+.svc-img{width:100%;height:160px;object-fit:cover;display:block}
+.svc-body{padding:1rem}
+.svc-body h3{font-size:15px;font-weight:700;margin-bottom:5px;color:var(--text)}
+.svc-body p{font-size:13px;color:var(--text2);line-height:1.5}
+
+/* ── PHOTO BAND ── */
+.photo-band{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+.photo-band img{width:100%;height:200px;object-fit:cover;display:block}
+
+/* ── GALLERY 3 ── */
+.gallery3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:1.5rem 0}
+.gallery3 img{width:100%;height:200px;object-fit:cover;border-radius:4px;display:block}
+
+/* ── MEDIA BUTTONS ── */
+.media-btns{display:flex;gap:16px;margin:1.5rem 0;flex-wrap:wrap;align-items:center}
+.media-btns img{height:70px;object-fit:contain}
+
+/* ── SITUATIONS ── */
+.sit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:1.5rem}
+.sit-card{background:var(--gray);border-radius:4px;padding:1.5rem}
+.sit-card h3{font-size:15px;font-weight:700;margin-bottom:.5rem}
+.sit-card p{font-size:14px;color:var(--text2);line-height:1.6}
+
+/* ── STEPS ── */
+.steps{display:flex;flex-direction:column;gap:18px;margin:1.5rem 0}
+.step{display:flex;gap:16px;align-items:flex-start}
+.step-n{width:36px;height:36px;min-width:36px;background:var(--red);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700}
+.step h3{font-size:15px;font-weight:700;margin-bottom:3px}
+.step p{font-size:14px;color:var(--text2)}
+
+/* ── FAQ ── */
+.faq-item{border:1px solid var(--gray2);border-radius:4px;padding:1rem 1.25rem;margin-bottom:8px;cursor:pointer;transition:.2s}
+.faq-item:hover{border-color:var(--red)}
+.faq-q{font-weight:700;font-size:15px;margin-bottom:0;display:flex;justify-content:space-between;align-items:center;user-select:none}
+.faq-q::after{content:'▾';color:var(--red);font-size:18px;flex-shrink:0;margin-left:12px}
+.faq-a{font-size:14px;color:var(--text2);line-height:1.75;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--gray2)}
+
+/* ── PHASE GRID ── */
+.phase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:1.5rem 0}
+.phase-card{border-left:3px solid var(--red);padding:1.25rem 1.5rem;background:var(--gray)}
+.phase-card h3{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin-bottom:.6rem}
+.phase-card p{font-size:14px;color:var(--text);line-height:1.6}
+
+/* ── INFO BOX ── */
+.info{background:var(--gray);border-left:3px solid var(--red);padding:1rem 1.25rem;margin:1.25rem 0;font-size:14px;line-height:1.7}
+.info ul{margin-left:1.25rem;margin-top:.4rem}
+.info li{margin-bottom:.3rem}
+
+/* ── CTA DARK ── */
+.cta-dark{background:var(--dark);padding:3rem 2rem;text-align:center}
+.cta-dark h2{color:#fff;font-size:clamp(20px,2.5vw,28px);font-weight:700;margin-bottom:.75rem;line-height:1.3}
+.cta-dark p{color:#aaa;margin-bottom:1.5rem;font-size:15px}
+
+/* ── PRICE TABLES ── */
+.price-sec{margin-bottom:2.5rem}
+.price-sec h2{font-size:20px;font-weight:700;padding-bottom:.6rem;border-bottom:3px solid var(--red);margin-bottom:1rem}
+.price-sec h3{font-size:16px;font-weight:700;margin:1.5rem 0 .6rem}
+.price-sec h4{font-size:13px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;margin:.8rem 0 .4rem;border-top:1px solid var(--gray2);padding-top:.6rem}
+.ptable{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:.5rem;display:table;table-layout:fixed}
+.ptable th{background:var(--dark);color:#fff;padding:9px 12px;text-align:left;font-weight:600;font-size:12px;white-space:normal}
+.ptable td{padding:8px 12px;border-bottom:1px solid var(--gray2);vertical-align:top;word-wrap:break-word}
+.ptable tr:nth-child(even) td{background:#fafafa}
+.ptable tr:hover td{background:#fff0f0}
+.price-sec{overflow-x:auto}
+.pnote{font-size:12px;color:var(--text2);font-style:italic;margin-top:.3rem}
+.lv{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:2px;margin-right:4px;vertical-align:middle}
+.lv-e{background:#e8f5e9;color:#2e7d32}
+
+/* ── CONTACT BAR ── */
+.cbar{background:#1a1a1a;color:#999;display:flex;flex-wrap:wrap;gap:1.5rem;padding:1.25rem 2rem;font-size:13px;justify-content:center}
+.cbar a{color:#ccc;text-decoration:none}.cbar a:hover{color:var(--red)}
+.cbar strong{color:#fff}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);color:#666;font-size:12px}
+.ft{max-width:1100px;margin:0 auto;padding:3rem 24px 2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:2rem}
+footer h4{color:#aaa;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.75rem}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+footer ul li a{color:#666;text-decoration:none;cursor:pointer}
+footer ul li a:hover{color:var(--red)}
+.fb{border-top:1px solid #1f1f1f;padding:1rem 24px;text-align:center;font-size:11px;color:#444}
+.fsoc{display:flex;gap:12px;margin-top:.75rem}
+.fsoc a{color:#555;text-decoration:none;font-size:12px}
+.fsoc a:hover{color:var(--red)}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .two-col{grid-template-columns:1fr}
+  .two-col.reverse{direction:ltr}
+  .gallery3{grid-template-columns:1fr 1fr}
+  .photo-band{grid-template-columns:1fr 1fr}
+  .banner{height:220px}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span><a href="tel:18776746868">Sans frais: 1.877.674.6868</a></span>
+  <span class="center">Photo Service offre maintenant uniquement des services de numérisation de Photo · Diapo · Film / Vidéo.</span>
+  <div class="right">
+    <a onclick="go('numerisation')">Nous joindre</a>
+    <div class="lang-sw"><a class="on" href="photoservice-temp.html">FR</a><a href="photoservice-en.html">EN</a></div>
+  </div>
+</div>
+
+
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" onclick="go('accueil')" style="cursor:pointer;text-decoration:none;display:flex;align-items:center">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/logo-photo-service-fr.svg" alt="Photo Service - Créer l'Histoire" style="height:46px;display:block">
+    </a>
+    <div class="nav-links">
+      <a onclick="go('accueil');setTimeout(function(){var s=document.getElementById('svc-section');if(s)s.scrollIntoView({behavior:'smooth'});},150)" id="n-num">Numérisation et transfert</a>
+      <a onclick="go('souvenirs')" id="n-sou">Préserver vos souvenirs</a>
+      <a onclick="go('guide')" id="n-gui">Guide de préparation</a>
+      <a onclick="go('prix')" id="n-pri">Liste de prix</a>
+      <a class="nav-cta" href="mailto:info@photoservice.ca">Nous joindre</a>
+    </div>
+  </div>
+</nav>
+
+<div id="pg-accueil" class="pg on">
+
+  <div class="hero">
+    <img class="bg" src="services-image-colorize1.jpg" alt="Photo Service - Annual Pic-Nic">
+    <div class="hero-in">
+      <div class="eyebrow"><strong>Depuis 1937 · 3e génération · Seul Photo Manager certifié au Québec</strong></div>
+      <h1>Dans 50 ans, saurez-vous<br><em>vous en souvenir?</em></h1>
+      <p>Nous ne parlons pas simplement d'images et de films amateurs. Nous parlons de votre enfance, du jour de votre mariage, de toute votre histoire familiale… de votre vie.</p>
+      <div class="hero-btns">
+        <a class="btn-r" href="tel:5148492291">514.849.2291</a>
+        <a class="btn-o" href="mailto:info@photoservice.ca">info@photoservice.ca</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLOGAN BAND mince -->
+  <div style="background:var(--dark);padding:.9rem 2rem;text-align:center;border-top:1px solid #2a2a2a;border-bottom:2px solid var(--red)">
+    <p style="color:#fff;font-size:26px;font-weight:800;font-style:normal">Vos souvenirs méritent mieux qu'une boîte dans le grenier.</p>
+  </div>
+
+
+  <style>
+  .mosaic-img{width:100%;height:80px;object-fit:cover;display:block}
+  </style>
+  <div style="display:grid;grid-template-columns:repeat(15,1fr);gap:2px">
+    <img class="mosaic-img" src="img_1059.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/1-negscan01-640w.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="img_1061.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/1-negscan02-640w.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="img_1067.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/slides05-1-640w.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="img_1069.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/slides01-1-p-500-640w.jpeg" alt="" loading="lazy">
+    <img class="mosaic-img" src="img_1070.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/watch-vhstapes1-1920w.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="img_1071.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/moviereels-main-277c269e-1920w.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="phone-archiving_1004.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/0-prints02-p-500-640w.jpeg" alt="" loading="lazy">
+    <img class="mosaic-img" src="prints-archiving_1001.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/0-prints04-640w.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="prints-archiving_1005.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/albums01-640w.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="slides_1007.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/albums02-1-640w.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="slides_08407.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/documents-f9634843-1920w.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="vhs_1002.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/memory2-640w.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="vhs_1006.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/funpart-share-640w.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="books_1008.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/3-Classement-640w.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="archivekit_prints01.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/pexels-photo-2718645-df73d951-1920w.jpeg" alt="" loading="lazy">
+    <img class="mosaic-img" src="ArchivingWoman004.JPG" alt="" loading="lazy">
+    <img class="mosaic-img" src="https://lirp.cdn-website.com/md/pexels/dms3rep/multi/opt/pexels-photo-2867980-640w.jpeg" alt="" loading="lazy">
+    <img class="mosaic-img" src="ArchivingWoman005.JPG" alt="" loading="lazy">
+    <img class="mosaic-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/_ArchivingWoman011-1920w.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="ArchivingWoman012.JPG" alt="" loading="lazy">
+    <img class="mosaic-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/FunPart-tablet-640w.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="BoomersDownsize01.JPG" alt="" loading="lazy">
+    <img class="mosaic-img" src="archiving_08456.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="archiving_08459.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="archiving_08466.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="archiving_08484.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="archiving_08503.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="archiving_08507.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="archiving_08548.jpg" alt="" loading="lazy">
+    <img class="mosaic-img" src="services-image-colorize1.jpg" alt="" loading="lazy">
+  </div>
+
+  <section id="svc-section" style="background:var(--gray)">
+    <div class="wrap">
+      <div class="sec-label">Ce que nous faisons</div>
+      <h2 class="sec-h">Numérisation &amp; Archivage</h2>
+      <p class="sec-sub">Tous les formats analogiques — photos, diapositives, négatifs, films, vidéos, audio — transformés en fichiers numériques durables.</p>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:2rem">
+        <div class="svc-card" onclick="go('negatifs')">
+          <img class="svc-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/pexels-photo-3693701-7551427b-1920w.jpeg" alt="Négatifs">
+          <div class="svc-body"><h3>Négatifs</h3><p>35mm, 120, 620, 4×5, 8×10, 110, 126, 127, 70mm — couleur et N&amp;B</p></div>
+        </div>
+        <div class="svc-card" onclick="go('diapositives')">
+          <img class="svc-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/pexels-photo-16730702-da68e51d-1920w.jpeg" alt="Diapositives">
+          <div class="svc-body"><h3>Diapositives</h3><p>110, 126, 120 — en carrousel ou en vrac, montées ou non</p></div>
+        </div>
+        <div class="svc-card" onclick="go('video')">
+          <img class="svc-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/pexels-photo-157540-a7dd1fe4-1920w.jpeg" alt="Bandes vidéo">
+          <div class="svc-body"><h3>Bandes vidéo</h3><p>VHS, VHS-C, Hi-8, miniDV, Betamax, Digital 8, Vidéo 8</p></div>
+        </div>
+        <div class="svc-card" onclick="go('bobines')">
+          <img class="svc-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/moviereels-main-277c269e-1920w.jpg" alt="Bobines film">
+          <div class="svc-body"><h3>Bobines 8mm &amp; 16mm</h3><p>Films ciné maison — avec ou sans son — transférés en HD</p></div>
+        </div>
+        <div class="svc-card" onclick="go('photos')">
+          <img class="svc-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/prints-main-c10e4ad5-1920w.jpg" alt="Photos">
+          <div class="svc-body"><h3>Photographies</h3><p>De très petit format jusqu'à 40×60 pouces — pages d'album incluses</p></div>
+        </div>
+        <div class="svc-card" onclick="go('albums')">
+          <img class="svc-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/albums-main-b6500f16-1920w.jpg" alt="Albums">
+          <div class="svc-body"><h3>Albums &amp; Scrapbook</h3><p>Pages entières ou photos individuelles — jusqu'à 12×18 po.</p></div>
+        </div>
+        <div class="svc-card" onclick="go('lettres')">
+          <img class="svc-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/documents-f9634843-1920w.jpg" alt="Documents">
+          <div class="svc-body"><h3>Lettres &amp; Documents</h3><p>Certificats, recettes, coupures de journaux, généalogie</p></div>
+        </div>
+        <div class="svc-card" onclick="go('cassettes')">
+          <img class="svc-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/pexels-photo-2718645-df73d951-1920w.jpeg" alt="Cassettes audio">
+          <div class="svc-body"><h3>Audio</h3><p>Cassettes, vinyles 33/45, bobines audio, micro-cassettes</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-label">Pour qui nous le faisons</div>
+      <h2 class="sec-h">Nous aidons des gens comme vous</h2>
+
+      <!-- 2 photos côte à côte -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:1.5rem 0">
+        <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/_ArchivingWoman011-1920w.jpg" alt="Archivage photo famille" style="width:100%;height:280px;object-fit:cover;border-radius:4px">
+        <img src="archivekit_prints01.jpg" alt="Boîte de photos de famille" style="width:100%;height:280px;object-fit:cover;border-radius:4px">
+      </div>
+
+      <!-- 6 situations en grille 2 colonnes -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:1rem">
+        <div class="sit-card"><h3>📦 La maison familiale</h3><p>Vous videz la maison de vos parents et découvrez des boîtes de photos, des albums et des films 8mm que personne ne peut regarder.</p></div>
+        <div class="sit-card"><h3>🕯️ La succession</h3><p>Un proche a quitté. Vous voulez préserver sa mémoire et partager ses photos avec toute la famille avant que le temps ne les abîme.</p></div>
+        <div class="sit-card"><h3>📱 Le chaos numérique</h3><p>Vos photos sont éparpillées entre téléphones, ordinateurs, DVD et disques durs. Vous ne savez plus où est quoi.</p></div>
+        <div class="sit-card"><h3>🎂 Le cadeau unique</h3><p>Vous voulez offrir quelque chose de profondément significatif — archives familiales sur clé USB pour un anniversaire ou une retraite.</p></div>
+        <div class="sit-card"><h3>🏥 La personne âgée</h3><p>Un parent déménage en résidence. C'est le moment de numériser ses précieux souvenirs avant qu'ils ne se dispersent.</p></div>
+        <div class="sit-card"><h3>💔 Le divorce</h3><p>La famille se sépare. Vous voulez vous assurer que chacun conserve une copie des souvenirs communs avant que la collection ne se disperse.</p></div>
+        <div class="sit-card"><h3>📜 L'héritage familial</h3><p>Vous voulez transmettre l'histoire de votre famille aux générations futures — photos, films, documents et enregistrements.</p></div>
+        <div class="sit-card"><h3>🏢 Le patrimoine commercial</h3><p>Votre entreprise ou institution possède des archives historiques — photos, films, documents — qui méritent d'être numérisés et préservés.</p></div>
+        <div class="sit-card"><h3>🔍 Le généalogiste</h3><p>Vous reconstituez l'histoire de votre famille et voulez numériser et organiser photos, documents et lettres pour les générations à venir.</p></div>
+        <div class="sit-card"><h3>🎬 Le cinéaste amateur</h3><p>Vous avez des bobines 8mm, des VHS ou des cassettes Hi-8 de famille qui dorment dans un tiroir. Il est temps de les revoir sur grand écran.</p></div>
+    </div>
+  </section>
+
+  <section style="background:var(--gray)">
+    <div class="wrap">
+      <div class="sec-label">Comment ça marche</div>
+      <h2 class="sec-h">Simple comme bonjour</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:1.5rem">
+        <div class="step"><div class="step-n">1</div><div><h3>Appelez ou écrivez-nous</h3><p>Décrivez-nous votre projet — sans engagement. Pas besoin de rendez-vous.</p></div></div>
+        <div class="step"><div class="step-n">2</div><div><h3>Déposez vos souvenirs</h3><p>Apportez vos originaux à notre point de dépôt au centre-ville de Montréal.</p></div></div>
+        <div class="step"><div class="step-n">3</div><div><h3>On s'occupe de tout</h3><p>Numérisation haute qualité et remise sur clé USB, DVD ou téléchargement en ligne.</p></div></div>
+        <div class="step"><div class="step-n">4</div><div><h3>Vos originaux vous sont retournés</h3><p>Vos précieux originaux reviennent toujours entre vos mains. Garantis.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-dark">
+    <h2>Redonnez vie à vos souvenirs — pour vous, pour vos enfants, pour toujours.</h2>
+    <p>Confiez-nous vos photos, films et vidéos. Nous en prenons soin comme s'ils étaient les nôtres.</p>
+    <a class="btn-r" href="mailto:info@photoservice.ca">Commencer maintenant →</a>
+  </div>
+
+  <div class="cbar">
+    <span>📞 <a href="tel:5148492291"><strong>514.849.2291</strong></a></span>
+    <span>📞 Sans frais: <a href="tel:18776746868"><strong>1.877.674.6868</strong></a></span>
+    <span>✉️ <a href="mailto:info@photoservice.ca">info@photoservice.ca</a></span>
+    <span>🕐 <strong>11h–17h · Lundi au Vendredi</strong></span>
+  </div>
+</div>
+
+<!-- ═══════════════════ NUMÉRISATION ═══════════════════ --><div id="pg-numerisation" class="pg">
+  <div class="banner">
+    <img class="bg" src="prints-archiving_1001.jpg" alt="">
+    <div class="banner-content">
+      <div class="banner-bc"><a onclick="go('accueil')">Accueil</a><span>›</span>Numérisation et transfert</div>
+      <h1>Numérisation et transfert</h1>
+      <p>Dans 50 ans, saurez-vous vous en souvenir? La réponse dépend de ce que vous faites aujourd'hui.</p>
+    </div>
+  </div>
+  <div class="subnav">
+    <div class="subnav-inner">
+      <a class="on" onclick="go('numerisation')">Aperçu</a>
+      <a onclick="go('souvenirs')">Préserver vos souvenirs</a>
+      <a onclick="go('guide')">Préparation des numérisations</a>
+      <a onclick="go('prix')">Liste de prix</a>
+    </div>
+  </div>
+  <section>
+    <div class="wrap">
+      <div class="two-col">
+        <img src="prints-archiving_1005.jpg" alt="Numérisation">
+        <div class="col-txt">
+          <h2>Numérisation &amp; Transfert</h2>
+          <p>Le Photo Service vous offre des services de numérisation professionnels. Nous ne parlons pas simplement d'images et de films amateurs — <strong>nous parlons de votre enfance, du jour de votre mariage, de toute votre histoire familiale… de votre vie.</strong></p>
+          <div class="info"><strong>Nous ne recommandons jamais d'expédier des archives familiales.</strong> Apportez vos précieux originaux à notre laboratoire.</div>
+        </div>
+      </div>
+      <h2 style="font-size:22px;font-weight:700;margin:2.5rem 0 1rem">Tous les formats que nous numérisons</h2>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+        <div class="svc-card" onclick="go('negatifs')"><img class="svc-img" src="1-negscan01-640w.jpg" alt="Négatifs"><div class="svc-body"><h3>Négatifs</h3><p>35mm, 120, 110, 126 et formats rares</p></div></div>
+        <div class="svc-card" onclick="go('diapositives')"><img class="svc-img" src="slides_1007.jpg" alt="Diapositives"><div class="svc-body"><h3>Diapositives</h3><p>Montées ou non — durée de vie augmentée</p></div></div>
+        <div class="svc-card" onclick="go('video')"><img class="svc-img" src="vhs_1002.jpg" alt="Bandes vidéo"><div class="svc-body"><h3>Bandes vidéo</h3><p>VHS, Hi-8, miniDV, Betamax — inspection incluse</p></div></div>
+        <div class="svc-card" onclick="go('bobines')"><img class="svc-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/moviereels-main-277c269e-1920w.jpg" alt="Bobines"><div class="svc-body"><h3>Bobines 8mm &amp; 16mm</h3><p>Films ciné maison transférés en HD</p></div></div>
+        <div class="svc-card" onclick="go('photos')"><img class="svc-img" src="archivekit_prints01.jpg" alt="Photographies"><div class="svc-body"><h3>Photographies</h3><p>Très petit à 40×60 po. — albums inclus</p></div></div>
+        <div class="svc-card" onclick="go('albums')"><img class="svc-img" src="albums01-640w.jpg" alt="Albums"><div class="svc-body"><h3>Albums &amp; Scrapbook</h3><p>Pages entières ou photos extraites</p></div></div>
+        <div class="svc-card" onclick="go('lettres')"><img class="svc-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/documents-f9634843-1920w.jpg" alt="Documents"><div class="svc-body"><h3>Lettres &amp; Certificats</h3><p>Documents, recettes, généalogie</p></div></div>
+        <div class="svc-card" onclick="go('cassettes')"><img class="svc-img" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/pexels-photo-2718645-df73d951-1920w.jpeg" alt="Audio"><div class="svc-body"><h3>Audio</h3><p>Cassettes, vinyles, bobines audio</p></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════ NÉGATIFS ═══════════════════ --><div id="pg-negatifs" class="pg">
+  <div class="banner">
+    <img class="bg" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/pexels-photo-3693701-7551427b-1920w.jpeg" alt="">
+    <div class="banner-content">
+      <div class="banner-bc"><a onclick="go('accueil')">Accueil</a><span>›</span><a onclick="go('numerisation')">Numérisation</a><span>›</span>Négatifs</div>
+      <h1>Numérisation de négatifs</h1>
+      <p>Nos clients trouvent souvent des trésors cachés sur ces vieux négatifs trouvés dans le grenier.</p>
+    </div>
+  </div>
+  <div class="subnav"><div class="subnav-inner"><a onclick="go('numerisation')">Aperçu</a><a onclick="go('prix')">Liste de prix</a></div></div>
+  <section><div class="wrap">
+    <div class="two-col">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/1-negscan01-640w.jpg" alt="Négatifs">
+      <div class="col-txt">
+        <h2>Numérisation des <strong>négatifs</strong></h2>
+        <p>Nos clients trouvent souvent des trésors cachés sur ces vieux négatifs trouvés dans le grenier, et ils méritent d'être protégés grâce à la numérisation et à l'impression! Une fois numérisés, la durée de vie de vos négatifs est considérablement augmentée et les images sont protégées en permanence des dommages environnementaux.</p>
+        <p>Profitez des images sur les appareils modernes et partagez les fichiers avec autant de personnes que vous le souhaitez! Vos négatifs originaux vous sont renvoyés une fois le projet terminé.</p>
+        <ul>
+          <li><strong>Formats :</strong> 35mm, 120, 620, 4×5, 8×10, 110, 126, 127, 70mm</li>
+          <li>Couleur et noir &amp; blanc</li>
+          <li>Analyses personnalisées et organisation des fichiers disponibles</li>
+          <li><strong>Fichiers :</strong> JPG ou TIFF · 300 dpi minimum</li>
+        </ul>
+      </div>
+    </div>
+    <div class="gallery3">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/1-negscan01-640w.jpg" alt="Négatifs 1">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/1-negscan02-640w.jpg" alt="Négatifs 2">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/1-negscan01-640w.jpg" alt="Négatifs 3">
+    </div>
+    <h3 style="font-size:16px;font-weight:700;margin:1.5rem 0 .75rem">Remise de vos fichiers</h3>
+    <div class="media-btns">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/media-buttons-usbs-1920w.jpg" alt="Clé USB">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/media-buttons-dvds-1920w.jpg" alt="DVD">
+    </div>
+    <div class="cta-dark" style="margin-top:2rem;border-radius:4px"><h2>Consultez notre liste de prix</h2><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><span class="btn-r" onclick="go('prix')">Voir les tarifs</span><a class="btn-o" href="mailto:info@photoservice.ca">Demander une estimation</a></div></div>
+  </div></section>
+</div>
+
+<!-- ═══════════════════ DIAPOSITIVES ═══════════════════ --><div id="pg-diapositives" class="pg">
+  <div class="banner">
+    <img class="bg" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/pexels-photo-16730702-da68e51d-1920w.jpeg" alt="">
+    <div class="banner-content">
+      <div class="banner-bc"><a onclick="go('accueil')">Accueil</a><span>›</span><a onclick="go('numerisation')">Numérisation</a><span>›</span>Diapositives</div>
+      <h1>Numérisation de diapositives</h1>
+      <p>Une fois numérisées, la durée de vie de vos diapositives est considérablement augmentée.</p>
+    </div>
+  </div>
+  <div class="subnav"><div class="subnav-inner"><a onclick="go('numerisation')">Aperçu</a><a onclick="go('prix')">Liste de prix</a></div></div>
+  <section><div class="wrap">
+    <div class="two-col">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/slides01-1-p-500-640w.jpeg" alt="Diapositives">
+      <div class="col-txt">
+        <h2>Diapositives <strong>au numérique</strong></h2>
+        <p>Une fois numérisées, la durée de vie de vos diapositives est considérablement augmentée et les images sont protégées en permanence des dommages environnementaux. Vos diapositives originales vous sont retournées une fois le projet terminé.</p>
+        <ul>
+          <li><strong>Formats :</strong> 110, 126 et 120 diapositives</li>
+          <li>Fournies en carrousel ou en vrac</li>
+          <li>Analyses personnalisées et organisation des fichiers disponibles</li>
+          <li><strong>Fichiers :</strong> JPG ou TIFF</li>
+        </ul>
+      </div>
+    </div>
+    <div class="gallery3">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/memory2-640w.jpg" alt="Diapositives 1">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/slides05-1-640w.jpg" alt="Diapositives 2">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/slides01-1-p-500-640w.jpeg" alt="Diapositives 3">
+    </div>
+    <h3 style="font-size:16px;font-weight:700;margin:1.5rem 0 .75rem">Remise de vos fichiers</h3>
+    <div class="media-btns">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/media-buttons-usbs-1920w.jpg" alt="Clé USB">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/media-buttons-dvds-1920w.jpg" alt="DVD">
+    </div>
+    <div class="cta-dark" style="margin-top:2rem;border-radius:4px"><h2>Consultez notre liste de prix</h2><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><span class="btn-r" onclick="go('prix')">Voir les tarifs</span><a class="btn-o" href="mailto:info@photoservice.ca">Demander une estimation</a></div></div>
+  </div></section>
+</div>
+
+<!-- ═══════════════════ BANDES VIDÉO ═══════════════════ --><div id="pg-video" class="pg">
+  <div class="banner">
+    <img class="bg" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/pexels-photo-157540-a7dd1fe4-1920w.jpeg" alt="">
+    <div class="banner-content">
+      <div class="banner-bc"><a onclick="go('accueil')">Accueil</a><span>›</span><a onclick="go('numerisation')">Numérisation</a><span>›</span>Bandes vidéo</div>
+      <h1>Bandes vidéo et films maison</h1>
+      <p>Vos bandes vidéo sont d'abord inspectées, réparées, puis nettoyées en vue du processus de transfert.</p>
+    </div>
+  </div>
+  <div class="subnav"><div class="subnav-inner"><a onclick="go('numerisation')">Aperçu</a><a onclick="go('prix')">Liste de prix</a></div></div>
+  <section><div class="wrap">
+    <div class="two-col">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/watch-vhstapes1-1920w.jpg" alt="Bandes vidéo VHS">
+      <div class="col-txt">
+        <h2>Bandes vidéo &amp; <strong>films maison</strong></h2>
+        <p>Vos mémoires de vidéo à domicile prendront une nouvelle vie en tant que fichiers de films numériques. Ces fichiers peuvent être lus sur des téléviseurs, des ordinateurs, des tablettes et des téléphones. De plus, ils peuvent être facilement partagés avec des membres de la famille ou des amis.</p>
+        <p>Vos bandes vidéo sont d'abord inspectées, réparées, puis nettoyées. Une bonne manipulation est cruciale car les bandes datées deviennent cassantes. Nos techniciens expérimentés sont formés pour gérer correctement les bandes vidéo vintage. Les bandes originales vous sont retournées une fois le projet terminé.</p>
+        <ul>
+          <li><strong>Formats :</strong> VHS, VHS-C, S-VHS, Vidéo 8, Hi-8, Mini-DV, Betamax, Digital 8, DVD, Betacam, 3/4 Umatic</li>
+          <li>Formats PAL / SECAM avec transcodage</li>
+          <li>Amélioration par Intelligence Artificielle disponible</li>
+          <li><strong>Fichiers :</strong> MPEG4, AVI, MOV (compatible PC + Mac)</li>
+        </ul>
+      </div>
+    </div>
+    <h3 style="font-size:16px;font-weight:700;margin:1.5rem 0 .75rem">Remise de vos fichiers</h3>
+    <div class="media-btns">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/media-buttons-usbs-1920w.jpg" alt="Clé USB">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/media-buttons-dvds-1920w.jpg" alt="DVD">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/media-buttons-downloads-1920w.jpg" alt="Téléchargement">
+    </div>
+    <div class="cta-dark" style="margin-top:2rem;border-radius:4px"><h2>Consultez notre liste de prix</h2><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><span class="btn-r" onclick="go('prix')">Voir les tarifs</span><a class="btn-o" href="mailto:info@photoservice.ca">Demander une estimation</a></div></div>
+  </div></section>
+</div>
+
+<!-- ═══════════════════ BOBINES ═══════════════════ --><div id="pg-bobines" class="pg">
+  <div class="banner">
+    <img class="bg" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/moviereels-main-277c269e-1920w.jpg" alt="">
+    <div class="banner-content">
+      <div class="banner-bc"><a onclick="go('accueil')">Accueil</a><span>›</span><a onclick="go('numerisation')">Numérisation</a><span>›</span>Bobines de film</div>
+      <h1>Bobines de film maison</h1>
+      <p>Vos souvenirs prennent une nouvelle vie sous forme de fichiers numériques lisibles sur tous vos appareils.</p>
+    </div>
+  </div>
+  <div class="subnav"><div class="subnav-inner"><a onclick="go('numerisation')">Aperçu</a><a onclick="go('prix')">Liste de prix</a></div></div>
+  <section><div class="wrap">
+    <div class="two-col">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/moviereels-main-277c269e-1920w.jpg" alt="Bobines film ciné">
+      <div class="col-txt">
+        <h2>Transfert de bobine <strong>à bobine</strong></h2>
+        <p>Vos souvenirs de films à la maison prennent une nouvelle vie sous forme de fichiers numériques lisibles. Chaque bobine de film est d'abord inspectée, réparée, puis nettoyée en vue du processus de transfert. Une bonne manipulation est cruciale car le film daté devient cassant.</p>
+        <ul>
+          <li><strong>Formats :</strong> 8mm, Super 8 (avec ou sans son), 16mm (magnétique / optique)</li>
+          <li>Résolution standard ou HD 1920×1080</li>
+          <li>Amélioration par Intelligence Artificielle disponible (4K, 8K)</li>
+          <li><strong>Fichiers :</strong> MP4, AVI, MOV</li>
+          <li>Les bobines originales vous sont retournées une fois le projet terminé</li>
+        </ul>
+      </div>
+    </div>
+    <h3 style="font-size:16px;font-weight:700;margin:1.5rem 0 .75rem">Remise de vos fichiers</h3>
+    <div class="media-btns">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/media-buttons-usbs-1920w.jpg" alt="Clé USB">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/media-buttons-dvds-1920w.jpg" alt="DVD">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/media-buttons-downloads-1920w.jpg" alt="Téléchargement">
+    </div>
+    <div class="cta-dark" style="margin-top:2rem;border-radius:4px"><h2>Consultez notre liste de prix</h2><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><span class="btn-r" onclick="go('prix')">Voir les tarifs</span><a class="btn-o" href="mailto:info@photoservice.ca">Demander une estimation</a></div></div>
+  </div></section>
+</div>
+
+<!-- ═══════════════════ PHOTOS ═══════════════════ --><div id="pg-photos" class="pg">
+  <div class="banner">
+    <img class="bg" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/prints-main-c10e4ad5-1920w.jpg" alt="">
+    <div class="banner-content">
+      <div class="banner-bc"><a onclick="go('accueil')">Accueil</a><span>›</span><a onclick="go('numerisation')">Numérisation</a><span>›</span>Photos</div>
+      <h1>Numérisation de photographies</h1>
+      <p>Les photos imprimées durent environ 80 ans, mais les fichiers numériques peuvent vivre éternellement!</p>
+    </div>
+  </div>
+  <div class="subnav"><div class="subnav-inner"><a onclick="go('numerisation')">Aperçu</a><a onclick="go('prix')">Liste de prix</a></div></div>
+  <section><div class="wrap">
+    <div class="two-col">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/0-prints04-640w.jpg" alt="Photos imprimées">
+      <div class="col-txt">
+        <h2>Numérisation professionnelle <strong>d'anciennes photographies</strong></h2>
+        <p>Nous numérisons d'anciennes photographies à l'aide de techniques professionnelles qui aboutissent à des fichiers JPG ou TIFF haute résolution. Des contrôles de qualité ont lieu tout au long du processus.</p>
+        <p>Une fois numérisées, la durée de vie de vos souvenirs est considérablement augmentée et vos images sont protégées en permanence des dommages environnementaux. Fini les disputes pour la photo de mariage de grand-mère!</p>
+        <ul>
+          <li><strong>Tailles :</strong> Originaux de très petits à 40×60 pouces</li>
+          <li>Pages d'album photo</li>
+          <li><strong>Fichiers :</strong> JPG ou TIFF · 300 dpi</li>
+          <li>Vos originaux vous sont retournés une fois le projet terminé</li>
+        </ul>
+      </div>
+    </div>
+    <div class="gallery3">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/0-prints02-p-500-640w.jpeg" alt="Photos 1">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/0-prints02-p-500-640w.jpeg" alt="Photos 2">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/0-prints04-640w.jpg" alt="Photos 3">
+    </div>
+    <div class="cta-dark" style="margin-top:2rem;border-radius:4px"><h2>Consultez notre liste de prix</h2><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><span class="btn-r" onclick="go('prix')">Voir les tarifs</span><a class="btn-o" href="mailto:info@photoservice.ca">Demander une estimation</a></div></div>
+  </div></section>
+</div>
+
+<!-- ═══════════════════ ALBUMS ═══════════════════ --><div id="pg-albums" class="pg">
+  <div class="banner">
+    <img class="bg" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/albums-main-b6500f16-1920w.jpg" alt="">
+    <div class="banner-content">
+      <div class="banner-bc"><a onclick="go('accueil')">Accueil</a><span>›</span><a onclick="go('numerisation')">Numérisation</a><span>›</span>Albums</div>
+      <h1>Albums photos et scrapbook</h1>
+      <p>Oui! Nous numérisons des albums photo et des pages d'album! Dites-nous simplement ce que vous recherchez.</p>
+    </div>
+  </div>
+  <div class="subnav"><div class="subnav-inner"><a onclick="go('numerisation')">Aperçu</a><a onclick="go('prix')">Liste de prix</a></div></div>
+  <section><div class="wrap">
+    <div class="two-col">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/albums02-1-640w.jpg" alt="Albums photos">
+      <div class="col-txt">
+        <h2>Albums photo <strong>+ pages scrapbook</strong></h2>
+        <p>Nous numérisons des pages d'album entières ou les découpons en éléments individuels. De plus, nous retirerons même les photos des albums pour vous!</p>
+        <p>Une fois numérisé, la durée de vie de vos pages d'album / photos / journaux est considérablement augmentée et les images seront protégées en permanence contre la décomposition. Vos matériaux originaux vous sont remis une fois le projet terminé.</p>
+        <ul>
+          <li><strong>Formats :</strong> Jusqu'à 12×18 pages</li>
+          <li>Options de recadrage disponibles</li>
+          <li>Analyses personnalisées et organisation des fichiers disponibles</li>
+          <li><strong>Fichiers :</strong> Basse ou haute résolution · 300 dpi · JPG ou TIFF</li>
+        </ul>
+      </div>
+    </div>
+    <div class="gallery3">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/albums01-640w.jpg" alt="Album 1">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/albums02-1-640w.jpg" alt="Album 2">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/albums02-1-640w.jpg" alt="Album 3">
+    </div>
+    <div class="cta-dark" style="margin-top:2rem;border-radius:4px"><h2>Consultez notre liste de prix</h2><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><span class="btn-r" onclick="go('prix')">Voir les tarifs</span><a class="btn-o" href="mailto:info@photoservice.ca">Demander une estimation</a></div></div>
+  </div></section>
+</div>
+
+<!-- ═══════════════════ LETTRES ═══════════════════ --><div id="pg-lettres" class="pg">
+  <div class="banner">
+    <img class="bg" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/documents-f9634843-1920w.jpg" alt="">
+    <div class="banner-content">
+      <div class="banner-bc"><a onclick="go('accueil')">Accueil</a><span>›</span><a onclick="go('numerisation')">Numérisation</a><span>›</span>Lettres &amp; Certificats</div>
+      <h1>Lettres, recettes et certificats</h1>
+      <p>La numérisation des documents avant qu'ils ne se détériorent les gardera en sécurité à long terme.</p>
+    </div>
+  </div>
+  <div class="subnav"><div class="subnav-inner"><a onclick="go('numerisation')">Aperçu</a><a onclick="go('prix')">Liste de prix</a></div></div>
+  <section><div class="wrap">
+    <div class="two-col">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/documents-f9634843-1920w.jpg" alt="Documents précieux">
+      <div class="col-txt">
+        <h2>Documents précieux <strong>numérisés</strong></h2>
+        <p>Des coupures de journaux de vos grands-parents à la recette de tarte de votre mère — la numérisation des documents avant qu'ils ne se détériorent les gardera en sécurité à long terme. Ces trésors écrits méritent autant de protection que vos photos.</p>
+        <ul>
+          <li>Lettres et correspondances familiales</li>
+          <li>Recettes de famille manuscrites</li>
+          <li>Certificats de naissance, mariage, décès</li>
+          <li>Coupures de journaux et articles</li>
+          <li>Documents de généalogie et actes anciens</li>
+        </ul>
+      </div>
+    </div>
+    <h3 style="font-size:16px;font-weight:700;margin:1.5rem 0 .75rem">Remise de vos fichiers</h3>
+    <div class="media-btns">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/media-buttons-usbs-1920w.jpg" alt="Clé USB">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/media-buttons-dvds-1920w.jpg" alt="DVD">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/media-buttons-downloads-1920w.jpg" alt="Téléchargement">
+    </div>
+    <div class="cta-dark" style="margin-top:2rem;border-radius:4px"><h2>Consultez notre liste de prix</h2><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><span class="btn-r" onclick="go('prix')">Voir les tarifs</span><a class="btn-o" href="mailto:info@photoservice.ca">Demander une estimation</a></div></div>
+  </div></section>
+</div>
+
+<!-- ═══════════════════ CASSETTES ═══════════════════ --><div id="pg-cassettes" class="pg">
+  <div class="banner">
+    <img class="bg" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/pexels-photo-2718645-df73d951-1920w.jpeg" alt="">
+    <div class="banner-content">
+      <div class="banner-bc"><a onclick="go('accueil')">Accueil</a><span>›</span><a onclick="go('numerisation')">Numérisation</a><span>›</span>Audio</div>
+      <h1>Rubans cassette et enregistrements</h1>
+      <p>Croyez-le ou non, la musique et les enregistrements audio peuvent être modernisés!</p>
+    </div>
+  </div>
+  <div class="subnav"><div class="subnav-inner"><a onclick="go('numerisation')">Aperçu</a><a onclick="go('prix')">Liste de prix</a></div></div>
+  <section><div class="wrap">
+    <div class="two-col">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/pexels-photo-2718645-df73d951-1920w.jpeg" alt="Cassettes audio">
+      <div class="col-txt">
+        <h2>Enregistrements audio <strong>numérisés</strong></h2>
+        <p>Croyez-le ou non, la musique et les enregistrements audio peuvent être modernisés! Pensez aux cassettes des années 80! Vos cassettes, vinyles de famille et bobines audio peuvent revivre en fichiers numériques de qualité.</p>
+        <ul>
+          <li>Cassettes audio standard 4 tracks</li>
+          <li>Cassettes audio 8 tracks</li>
+          <li>Roulettes audio ¼ po. (reel to reel)</li>
+          <li>Disques vinyle 33 et 45 tours</li>
+          <li>Micro-cassettes</li>
+          <li><strong>Fichiers :</strong> WAV ou MP3 · Pour lecteur CD ou fichier numérique</li>
+        </ul>
+      </div>
+    </div>
+    <h3 style="font-size:16px;font-weight:700;margin:1.5rem 0 .75rem">Remise de vos fichiers</h3>
+    <div class="media-btns">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/media-buttons-usbs-1920w.jpg" alt="Clé USB">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/media-buttons-dvds-1920w.jpg" alt="DVD">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/media-buttons-downloads-1920w.jpg" alt="Téléchargement">
+    </div>
+    <div class="cta-dark" style="margin-top:2rem;border-radius:4px"><h2>Consultez notre liste de prix</h2><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><span class="btn-r" onclick="go('prix')">Voir les tarifs</span><a class="btn-o" href="mailto:info@photoservice.ca">Demander une estimation</a></div></div>
+  </div></section>
+</div>
+
+<!-- ═══════════════════ SOUVENIRS ═══════════════════ --><div id="pg-souvenirs" class="pg">
+  <div class="banner">
+    <img class="bg" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/_img_1059-1920w.jpg" alt="">
+    <div class="banner-content">
+      <div class="banner-bc"><a onclick="go('accueil')">Accueil</a><span>›</span>Préserver vos souvenirs</div>
+      <h1>Préserver vos souvenirs</h1>
+      <p>Chaque photo raconte un moment de vie, un regard, une émotion qu'on ne veut surtout pas oublier. En prenant soin de vos souvenirs aujourd'hui, vous offrez à votre famille bien plus que des images : vous transmettez des fragments de votre histoire.</p>
+    </div>
+  </div>
+  <div class="subnav">
+    <div class="subnav-inner">
+      <a onclick="go('souvenirs');setTimeout(function(){var f=document.getElementById('faq-section');if(f)f.scrollIntoView({behavior:'smooth'});},150)">FAQ</a>
+      <a onclick="go('guide')">Guide de préparation</a>
+    </div>
+  </div>
+  <section><div class="wrap">
+    <div class="two-col">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/_ArchivingWoman011-1920w.jpg" alt="Archivage souvenirs">
+      <div class="col-txt">
+        <h2>Préserver vos souvenirs, c'est <strong>transmettre votre histoire</strong></h2>
+        <p><strong>Pourquoi organiser vos photos de famille maintenant?</strong></p>
+        <p style="font-style:italic;color:var(--text2)">"J'ai des boîtes de photos qui traînent depuis des années… Par où commencer?"<br>"Mes fichiers sont partout : dans mon téléphone, mon ordi, mes courriels..."</p>
+        <p>Ces questions, on les entend tous les jours. Vous n'êtes pas seul. Que ce soit des photos imprimées, des souvenirs numériques ou des diaporamas oubliés sur de vieux DVD, votre héritage visuel mérite mieux que de dormir dans l'oubli.</p>
+        <p><strong>Ce que vous risquez en attendant trop longtemps :</strong></p>
+        <ul style="margin-left:1.25rem;line-height:1.8;font-size:14px;color:var(--text2)">
+          <li>Les photos papier s'effacent, jaunissent, se déchirent</li>
+          <li>Les fichiers numériques se perdent ou deviennent illisibles</li>
+          <li>Les générations futures ne reconnaîtront plus les visages ni les lieux</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Parlez-nous de votre projet</strong> – qu'il soit petit ou ambitieux.</p>
+        <div style="margin-top:1rem"><a class="btn-r" href="mailto:info@photoservice.ca">Parlez-nous de votre projet</a></div>
+      </div>
+    </div>
+
+    <div class="two-col reverse" style="margin-top:2.5rem">
+      <img src="pexels-photo-2867980-640w.jpeg" alt="Photos de famille">
+      <div class="col-txt">
+        <h2>Et maintenant?</h2>
+        <p><strong>Faites le premier pas.</strong><br>Il suffit souvent d'une simple boîte de photos ou d'un dossier mal classé pour commencer.</p>
+        <p><strong>Des exemples concrets de projets que nous réalisons :</strong></p>
+        <ul style="margin-left:1.25rem;line-height:1.8;font-size:14px;color:var(--text2)">
+          <li>Numérisation complète de boîtes de photos d'une maison familiale avant une vente ou un déménagement.</li>
+          <li>Création d'un <strong>album souvenir intergénérationnel</strong> pour un anniversaire marquant.</li>
+          <li>Récupération et organisation de <strong>15 ans de photos numériques dispersées</strong> sur plusieurs appareils.</li>
+          <li>Préparation d'un <strong>diaporama hommage</strong> pour des funérailles ou une célébration de vie.</li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <section><div class="wrap">
+    <div id="faq-section" style="padding-top:1rem">
+      <h2 style="font-size:28px;font-weight:700;margin-bottom:1.5rem">FAQ – Gérer son héritage photo.</h2>
+      <div class="faq-item" ><div class="faq-q">📷 Pourquoi devrais-je organiser mes photos de famille maintenant?</div><div class="faq-a" style="display:none">Parce que les photos anciennes s'abîment avec le temps et les fichiers numériques peuvent facilement se perdre. Organiser vos photos dès aujourd'hui permet de préserver vos souvenirs et de faciliter leur transmission aux générations futures.</div></div>
+      <div class="faq-item" ><div class="faq-q">🗃️ Que faire avec mes vieilles photos imprimées?</div><div class="faq-a" style="display:none">Vous pouvez les trier, les restaurer, les numériser et les classer dans des albums physiques ou numériques. Cela permet de les protéger, mais aussi de les rendre facilement partageables avec votre famille.</div></div>
+      <div class="faq-item" ><div class="faq-q">💾 Comment sauvegarder mes photos pour qu'elles ne se perdent jamais?</div><div class="faq-a" style="display:none">En les numérisant en haute résolution, puis en les sauvegardant sur plusieurs supports : disque dur externe, clé USB, service cloud, et en version imprimée pour les moments marquants.</div></div>
+      <div class="faq-item" ><div class="faq-q">👵 Que faire des albums de mes parents ou grands-parents?</div><div class="faq-a" style="display:none">Ces albums contiennent souvent des trésors. Vous pouvez les numériser page par page ou extraire les photos pour les restaurer individuellement, puis créer un nouveau livre souvenir moderne.</div></div>
+      <div class="faq-item" ><div class="faq-q">📱 Mes photos sont éparpillées sur plusieurs appareils... comment m'y retrouver?</div><div class="faq-a" style="display:none">Une organisation centralisée est la clé. Il faut regrouper toutes les photos dans un seul espace, les trier par date, événement ou personne. C'est exactement ce que nous faisons en tant que seul Photo Manager certifié au Québec.</div></div>
+      <div class="faq-item" ><div class="faq-q">🎁 Peut-on offrir un projet de photos de famille en cadeau?</div><div class="faq-a" style="display:none">Absolument. Un album souvenir, un vidéo hommage ou une clé USB d'archives familiales font des cadeaux uniques et profondément touchants pour des anniversaires, retraites ou hommages.</div></div>
+      <div class="faq-item" ><div class="faq-q">🛑 Et si mes photos sont déjà endommagées?</div><div class="faq-a" style="display:none">Il est souvent possible de restaurer numériquement des photos abîmées : enlever les plis, les taches, raviver les couleurs. Chaque souvenir mérite une seconde vie.</div></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ═══════════════════ GUIDE ═══════════════════ --><div id="pg-guide" class="pg">
+  <div class="banner">
+    <img class="bg" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/1-+Gather-1920w.jpg" alt="">
+    <div class="banner-content">
+      <div class="banner-bc"><a onclick="go('accueil')">Accueil</a><span>›</span><a onclick="go('souvenirs')">Préserver vos souvenirs</a><span>›</span>Préparation des numérisations</div>
+      <h1>Préparation des numérisations</h1>
+      <p>Avant de commencer, il est important de comprendre votre motivation — votre "pourquoi" derrière ce projet.</p>
+    </div>
+  </div>
+  <div class="subnav"><div class="subnav-inner"><a onclick="go('prix')">Liste de prix</a></div></div>
+  <section><div class="wrap">
+
+    <div class="two-col" style="margin-bottom:2rem">
+      <div style="grid-column:1/-1">
+        <p style="font-size:15px;line-height:1.8;color:var(--text2);margin-bottom:.75rem">Que vous souhaitiez créer un héritage pour les générations futures ou simplement mettre de l'ordre dans vos souvenirs, suivez ces 5 phases pour transformer votre collection en archives numériques durables. <a onclick="go('prix')" style="color:var(--red);cursor:pointer">Liste des prix ▸</a></p>
+      </div>
+    </div>
+
+    <!-- 6 PHASES avec image + texte alternés -->
+    <div class="two-col" style="margin-bottom:3rem">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/1-+Gather-1920w.jpg" alt="Phase de collecte">
+      <div class="col-txt">
+        <h3 style="font-size:17px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:.75rem">PHASE DE COLLECTE</h3>
+        <p>Où commencez-vous? Vous devez <strong>rassembler toutes les photos</strong>, y compris celles oubliées dans de vieux appareils photo, disques durs externes, clés USB et ces vieilles photos sur CD/DVD.</p>
+        <p style="margin-top:.75rem">Choisissez un endroit chez vous où vous avez de l'espace pour travailler. Mais gardez à l'esprit : dédiez cet endroit <strong>UNIQUEMENT</strong> à votre projet d'organisation de photos jusqu'à ce qu'il soit terminé.</p>
+      </div>
+    </div>
+
+    <div class="two-col reverse" style="margin-bottom:3rem">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/3-Classement-640w.jpg" alt="Phase de tri">
+      <div class="col-txt">
+        <h3 style="font-size:17px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:.75rem">PHASE DE TRI</h3>
+        <p>Dans cette phase, il est utile de réfléchir à la manière dont vous voudrez accéder à vos photos à l'avenir. Allez-vous chercher des photos <strong>par date</strong>, <strong>par personne</strong> ou <strong>par événement</strong>?</p>
+        <p style="margin-top:.75rem">Une fois que vous avez décidé comment vous accéderez le plus probablement à vos photos, suivez les <strong>ABC de l'Organisation de Photos</strong> :</p>
+        <ul style="margin:.75rem 0 0 1.25rem;font-size:14px;color:var(--text2);line-height:1.8">
+          <li><strong>A</strong> est pour Album — ces photos méritent d'être exposées dans un album</li>
+          <li><strong>B</strong> est pour Boîte — à conserver, de qualité archivistique</li>
+          <li><strong>C</strong> est pour Corbeille — les photos à éliminer</li>
+          <li><strong>H</strong> est pour Histoire — la photo raconte-t-elle une histoire?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-bottom:3rem">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/0-Collecte-1920w.jpg" alt="Phase numérisation">
+      <div class="col-txt">
+        <h3 style="font-size:17px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:.75rem">PHASE NUMÉRISATION</h3>
+        <p>Dans cette phase, votre objectif est de décider comment vous allez préserver vos photos.</p>
+        <p style="margin-top:.75rem">Allez-vous scanner les photos physiques avec votre téléphone? Acheter un bon numériseur? Ou faire faire le travail par <strong>Photo Service</strong> pour obtenir la meilleure qualité?</p>
+      </div>
+    </div>
+
+    <div class="two-col reverse" style="margin-bottom:3rem">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/2-Num%C3%83-risation-1920w.jpg" alt="Phase sauvegarde">
+      <div class="col-txt">
+        <h3 style="font-size:17px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:.75rem">PHASE DE SAUVEGARDE</h3>
+        <p>Une fois que vous avez organisé et numérisé vos photos, vous devez maintenant les <strong>protéger pour l'avenir</strong>.</p>
+        <p style="margin-top:.75rem">Décidez si vous prévoyez de conserver vos photos physiques. Envisagez d'investir dans des solutions de stockage de qualité archivistique.</p>
+        <h2 style="font-size:18px;font-weight:700;margin:1.5rem 0 1rem">En plus des originaux, ayez vos souvenirs sur au moins 2 des 3 options suivantes :</h2>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:.5rem">
+          <div style="text-align:center">
+            <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/media-buttons-usbs-1920w.jpg" alt="Clé USB" style="width:100%;height:120px;object-fit:cover;border-radius:4px;display:block">
+            <h4 style="font-size:13px;font-weight:700;margin:.6rem 0 .4rem">Clé USB</h4>
+            <ul style="font-size:12px;color:var(--text2);text-align:left;margin-left:1rem;line-height:1.7">
+              <li>Conserve vos souvenirs numérisés</li>
+              <li>Visualisation facile (TV, ordi)</li>
+              <li>Idéal pour partager</li>
+              <li>Fait un excellent cadeau</li>
+            </ul>
+          </div>
+          <div style="text-align:center">
+            <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/media-buttons-dvds-1920w.jpg" alt="DVD" style="width:100%;height:120px;object-fit:cover;border-radius:4px;display:block">
+            <h4 style="font-size:13px;font-weight:700;margin:.6rem 0 .4rem">DVD</h4>
+            <ul style="font-size:12px;color:var(--text2);text-align:left;margin-left:1rem;line-height:1.7">
+              <li>Conserve vos souvenirs numérisés</li>
+              <li>Visualisation facile (TV, ordi)</li>
+              <li>Idéal pour partager</li>
+              <li>Fait un excellent cadeau</li>
+            </ul>
+          </div>
+          <div style="text-align:center">
+            <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/media-buttons-downloads-1920w.jpg" alt="Téléchargement numérique" style="width:100%;height:120px;object-fit:cover;border-radius:4px;display:block">
+            <h4 style="font-size:13px;font-weight:700;margin:.6rem 0 .4rem">Téléchargement numérique</h4>
+            <ul style="font-size:12px;color:var(--text2);text-align:left;margin-left:1rem;line-height:1.7">
+              <li>Accès pratique à vos fichiers</li>
+              <li>Idéal pour partager en famille</li>
+              <li>Téléchargement sur ordi ou disque dur</li>
+              <li>Options cloud personnel ou familial</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-bottom:3rem">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/funpart-share-640w.jpg" alt="Phase profiter et partager">
+      <div class="col-txt">
+        <h3 style="font-size:17px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:.75rem">PHASE DE PROFITER / PARTAGER / CÉLÉBRER</h3>
+        <p>Cette phase est la raison pour laquelle vous avez fait tout ce travail. Maintenant, il est temps de <strong>profiter de toutes vos photos</strong> et c'est facile maintenant qu'elles sont organisées!</p>
+        <p style="margin-top:.75rem">Par exemple, créez des films et des diaporamas captivants pour revivre les moments forts de votre passé. Invitez votre famille et vos amis à une soirée de visionnement spéciale.</p>
+      </div>
+    </div>
+
+    <div class="two-col reverse" style="margin-bottom:3rem">
+      <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/FunPart-tablet-640w.jpg" alt="La numérisation chez Photo Service">
+      <div class="col-txt">
+        <h2 style="font-size:22px;font-weight:700;margin-bottom:1rem">La numérisation chez Photo Service</h2>
+        <div class="steps">
+          <div class="step"><div class="step-n">1</div><div><h3>Déposez vos souvenirs</h3><p>Déposez des photos, films personnels et souvenirs à numériser. Parlez à un archiviste professionnel de Photo Service pour votre projet.</p></div></div>
+          <div class="step"><div class="step-n">2</div><div><h3>On s'occupe de la transformation</h3><p>Vos médias analogiques sont soigneusement transformés en formats multimédias modernes pour une visualisation facile sur la technologie d'aujourd'hui.</p></div></div>
+          <div class="step"><div class="step-n">3</div><div><h3>Tranquillité d'esprit!</h3><p>Détendez-vous en sachant que vos précieux moments en famille sont protégés pour des générations. Vous pouvez maintenant partager facilement vos fichiers.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info">
+      <strong>Qui a besoin d'une copie?</strong>
+      <p style="margin-top:.5rem">Une fois vos documents numérisés, faire des duplicatas est assez simple et abordable. Avant de vous lancer dans votre projet, réfléchissez à qui d'autre dans votre famille ou réseau souhaiterait une copie.</p>
+    </div>
+
+    <div class="info" style="margin-top:1rem">
+      <strong>Gardez vos souvenirs en sécurité + local!</strong>
+      <p style="margin-top:.5rem">Nous ne recommandons jamais d'expédier des archives familiales, des photos précieuses et des films personnels irremplaçables. Apportez-les à notre laboratoire.</p>
+    </div>
+
+    <div class="cta-dark" style="border-radius:4px;margin-top:2rem">
+      <h2>Des questions? Nous aimerions avoir de vos nouvelles!</h2>
+      <a class="btn-r" href="mailto:info@photoservice.ca">Contactez-nous!</a>
+    </div>
+  </div></section>
+</div>
+
+<!-- ═══════════════════ PRIX ═══════════════════ --><div id="pg-prix" class="pg">
+  <div class="banner">
+    <img class="bg" src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/opt/PhotoService_roolsize-1920w.jpg" alt="">
+    <div class="banner-content">
+      <div class="banner-bc"><a onclick="go('accueil')">Accueil</a><span>›</span><a onclick="go('numerisation')">Numérisation</a><span>›</span>Liste de prix</div>
+      <h1>Transfert Numérisation — Prix</h1>
+      <p>Photographie · Diapositive · Négatif · Vidéo</p>
+    </div>
+  </div>
+  <div class="subnav"><div class="subnav-inner" style="flex-wrap:wrap">
+    <a onclick="scrollPrix('prix-photos')">Photographies</a>
+    <a onclick="scrollPrix('prix-diapos')">Diapositives</a>
+    <a onclick="scrollPrix('prix-negatifs')">Négatifs</a>
+    <a onclick="scrollPrix('prix-video')">Cassettes vidéo</a>
+    <a onclick="scrollPrix('prix-bobines')">Films cinés</a>
+    <a onclick="scrollPrix('prix-audio')">Bandes audio</a>
+  </div></div>
+  <section><div class="wrap">
+
+    <!-- PHOTOGRAPHIES -->
+    <div class="price-sec" id="prix-photos">
+      <h2>📷 Photographies, tableaux, illustrations, certificats…</h2>
+      <p style="font-size:14px;color:var(--text2);margin-bottom:1rem">Numérisation à 300 dpi — JPEG ou TIFF</p>
+      <h3><span class="lv lv-e">ÉCONO</span> Retouche de base — Photos 8×12 po. et moins</h3>
+      <h4>Photos en vrac</h4>
+      <table class="ptable">
+        <tr><th>Quantité</th><th>Fichier 4×6 po. à 300 dpi</th><th>Fichier 8×12 po. à 300 dpi</th><th>Dans un album</th></tr>
+        <tr><td>1 à 49</td><td>0,89 $/ch</td><td>1,11 $/ch</td><td>0,99 $/ch</td></tr>
+        <tr><td>50 à 99</td><td>0,79 $/ch</td><td>0,99 $/ch</td><td>0,89 $/ch</td></tr>
+        <tr><td>100 à 249</td><td>0,59 $/ch</td><td>0,74 $/ch</td><td>0,69 $/ch</td></tr>
+        <tr><td>250 à 499</td><td>0,54 $/ch</td><td>0,68 $/ch</td><td>0,64 $/ch</td></tr>
+        <tr><td>500 à 999</td><td>0,49 $/ch</td><td>0,61 $/ch</td><td>0,99 $/ch</td></tr>
+        <tr><td>1 000 à 1 999</td><td>0,44 $/ch</td><td>0,55 $/ch</td><td>0,54 $/ch</td></tr>
+        <tr><td>2 000 à 2 999</td><td>0,39 $/ch</td><td>0,49 $/ch</td><td>0,49 $/ch</td></tr>
+        <tr><td>3 000 et plus</td><td>0,34 $/ch</td><td>0,43 $/ch</td><td>0,44 $/ch</td></tr>
+      </table>
+      <p class="pnote">* Frais supplémentaire de 0,50 $ si photo avec colle</p>
+      <h4>Photos 9×12 à 12×18 pouces</h4>
+      <table class="ptable">
+        <tr><th>Format</th><th>Prix</th></tr>
+        <tr><td>En vrac ou page d'album — fichier 8×12 po. à 300 dpi</td><td>2,75 $</td></tr>
+      </table>
+    </div>
+
+    <div class="price-sec" id="prix-diapos">
+      <h2>📽️ Diapositives</h2>
+      <h3><span class="lv lv-e">ÉCONO</span> Diapositives montées dans un cadre</h3>
+      <table class="ptable">
+        <tr><th>35mm, 110, 126, 127</th><th>4×6 po. à 300 dpi</th><th>8×12 po. à 300 dpi<br><small>(grandeur réelle à 2400 dpi)</small></th><th>12×18 po. à 300 dpi</th></tr>
+        <tr><td>1 à 49</td><td>0,99 $/ch</td><td>1,24 $/ch</td><td>1,49 $/ch</td></tr>
+        <tr><td>50 à 99</td><td>0,79 $/ch</td><td>0,99 $/ch</td><td>1,19 $/ch</td></tr>
+        <tr><td>100 à 249</td><td>0,69 $/ch</td><td>0,86 $/ch</td><td>1,04 $/ch</td></tr>
+        <tr><td>250 à 499</td><td>0,59 $/ch</td><td>0,74 $/ch</td><td>0,89 $/ch</td></tr>
+        <tr><td>500 et plus</td><td>0,49 $/ch</td><td>0,61 $/ch</td><td>0,74 $/ch</td></tr>
+      </table>
+      <table class="ptable">
+        <tr><th>120</th><th>Prix unitaire — SERVICE ÉCONO</th></tr>
+        <tr><td>Fichier 4×6 à 300 dpi</td><td>2,50 $</td></tr>
+        <tr><td>Fichier 8×12 à 300 dpi</td><td>3,00 $</td></tr>
+      </table>
+      <p class="pnote">* Supplément de 0,50 $ par diapo si le cadre doit être réparé. Transfert des fichiers par internet, sur votre clé USB (sans frais supplémentaire) ou sur DVD (1 $). JPG ou TIFF</p>
+    </div>
+
+    <div class="price-sec" id="prix-negatifs">
+      <h2>🎞️ Négatifs</h2>
+      <h4>35mm, 120mm, APS + Formats rares : 110, 126, 127, 70mm, Kodak disk</h4>
+      <table class="ptable">
+        <tr><th>Format</th><th>Fichier 4×6 po. à 300 dpi</th><th>Fichier 8×12 po. à 300 dpi</th></tr>
+        <tr><td>Prix unitaire</td><td>2,50 $/ch</td><td>3,00 $/ch</td></tr>
+      </table>
+    </div>
+
+        <div class="price-sec" id="prix-video">
+      <h2>📼 Cassettes vidéo *</h2>
+      <p style="font-size:14px;color:var(--text2);margin-bottom:.5rem"><strong>VHS, VHS-C, Vidéo 8, Hi-8, Mini-DV, Betamax, Digital 8, DVD, Vidéo 3/4 Umatic, Betacam</strong></p>
+      <p style="font-size:13px;color:var(--red);font-weight:700;margin-bottom:1rem">Conversion vidéo en fichiers MPEG4, .AVI, .MOV… — FRAIS MINIMUM 40 $ (seulement lorsqu'inférieur à ce prix)</p>
+
+      <h3>Résolution standard NTSC</h3>
+      <table class="ptable">
+        <tr><th>Types de cassettes NTSC</th><th>Résolution standard 720 H × 480 V</th></tr>
+        <tr><td>VHS, VHS-C, S-VHS, S-VHS-C</td><td>17,00 $/hr</td></tr>
+        <tr><td>Vidéo 8, Hi-8, Mini DV</td><td>18,00 $/hr</td></tr>
+        <tr><td>Betamax</td><td>23,00 $/hr</td></tr>
+        <tr><td>Digital 8, DV CAM, Mini DV-HD</td><td>29,00 $/hr</td></tr>
+        <tr><td>Mini DVD-RAM, Blue-Ray</td><td>33,00 $/hr</td></tr>
+        <tr><td>DVD</td><td>30,00 $/ch</td></tr>
+      </table>
+
+      <h3>PAL / SECAM — Conversion en NTSC (Transcodage)</h3>
+      <table class="ptable">
+        <tr><th>Types de cassettes PAL, SECAM</th><th>Résolution standard 720 H × 480 V</th></tr>
+        <tr><td>VHS, VHS-C, S-VHS, S-VHS-C</td><td>21,00 $/hr</td></tr>
+        <tr><td>Vidéo 8, Hi-8, Mini DV</td><td>23,00 $/hr</td></tr>
+        <tr><td>DVD</td><td>35,00 $/ch</td></tr>
+      </table>
+
+      <h3>Formats spéciaux</h3>
+      <table class="ptable">
+        <tr><th>Types de cassettes</th><th>Résolution standard 720 H × 480 V</th></tr>
+        <tr><td>Vidéo 3/4</td><td>40,00 $/hr</td></tr>
+        <tr><td>Betacam SP 30 minutes</td><td>35,00 $/chaque</td></tr>
+        <tr><td>Betacam SP 60 minutes</td><td>60,00 $/chaque</td></tr>
+        <tr><td>Betacam SX, Betacam Digital 60 minutes</td><td>70,00 $/chaque</td></tr>
+        <tr><td>Caméra vidéo HDD, Carte mémoire, Clé USB (fichier .AVI, .MOV etc.)</td><td>35,00 $/hr</td></tr>
+      </table>
+
+      <h3>Amélioration avec l'Intelligence Artificielle</h3>
+      <table class="ptable">
+        <tr><th>Amélioration avec Intelligence Artificielle</th><th>Supplément — Si demandé avant la conversion</th><th>Supplément — Si demandé après la conversion</th></tr>
+        <tr><td>Extrapolation AI HD 1920 H × 1080 V</td><td>32,00 $/hr</td><td>39,00 $/hr</td></tr>
+        <tr><td>Extrapolation AI 4K 3840 H × 2160 V</td><td>36,00 $/hr</td><td>45,00 $/hr</td></tr>
+        <tr><td>Extrapolation AI 8K 7680 H × 4320 V</td><td>46,00 $/hr</td><td>59,00 $/hr</td></tr>
+        <tr><td>Refocus et/ou Restauration couleur (AI)</td><td>14,00 $/hr</td><td>18,00 $/hr</td></tr>
+        <tr><td>Stabilisation d'image vidéo (AI)</td><td>3,00 $/min</td><td>4,00 $/min</td></tr>
+        <tr><td>Stabilisation d'images, Refocus et couleur</td><td>3,50 $/min</td><td>5,00 $/min</td></tr>
+        <tr><td>Slow motion, ralentissement vidéo (AI)</td><td>2,75 $/min</td><td>3,25 $/min</td></tr>
+        <tr><td>Montage vidéo (peut inclure AI)</td><td>—</td><td>80,00 $/hr</td></tr>
+        <tr><td>Retouche sur vidéo (AI)</td><td>—</td><td>60,00 $/sec</td></tr>
+        <tr><td>Traduction vidéo clip (AI)</td><td>—</td><td>40,00 $/min</td></tr>
+      </table>
+
+      <h3>Remise des fichiers vidéo</h3>
+      <table class="ptable">
+        <tr><th>Fichiers remis au client</th><th>Sans menu</th><th>Avec menu (divisé en chapitres)</th></tr>
+        <tr><td>Envoi par internet</td><td colspan="2">sans frais</td></tr>
+        <tr><td>Sur votre clé USB, disque dur</td><td colspan="2">sans frais</td></tr>
+        <tr><td>Sur clé USB acheté chez Photo Service</td><td colspan="2">Prix de clé USB en fonction de l'espace nécessaire</td></tr>
+        <tr><td>DVD vidéo</td><td>10,00 $/ch</td><td>35,00 $/ch</td></tr>
+        <tr><td>Blue-ray</td><td>15,00 $/ch</td><td>40,00 $/ch</td></tr>
+        <tr><td>Cassette vidéo</td><td>25,00 $/ch</td><td>—</td></tr>
+      </table>
+
+      <h3>Services additionnels</h3>
+      <table class="ptable">
+        <tr><th>Services</th><th>Prix</th></tr>
+        <tr><td>Copies suppl. DVD avec impression graphique (DVD et boîtier)</td><td>10,00 $/ch (prix de quantité disponible)</td></tr>
+        <tr><td>Réparation de cassette vidéo (avec conversion de la cassette)</td><td>15,00 $/ch</td></tr>
+        <tr><td>Réparation de cassette vidéo (sans conversion de la cassette)</td><td>30,00 $/ch</td></tr>
+        <tr><td>Diaporama de fichiers JPEG ou TIFF numérisés par notre laboratoire sur DVD</td><td>0,07 $/ch</td></tr>
+        <tr><td>Diaporama à partir de fichiers sur carte mémoire, Clé USB, CD, DVD sur DVD</td><td>0,09 $/ch</td></tr>
+        <tr><td>Réduction du prix de 5 % par tranche de 10 hrs (sauf suppléments AI)</td><td>-5 % / 10 hrs</td></tr>
+      </table>
+    </div>
+
+    <!-- FILMS CINÉ -->
+    <div class="price-sec" id="prix-bobines">
+      <h2>🎥 Roulettes de films ciné *</h2>
+      <p style="font-size:14px;color:var(--text2);margin-bottom:.5rem"><strong>8mm, Super 8, 16mm</strong></p>
+      <p style="font-size:13px;color:var(--red);font-weight:700;margin-bottom:1rem">Transfert de film ciné en fichiers MPEG4, .AVI, .MOV… — FRAIS MINIMUM 40 $ (seulement lorsqu'inférieur à ce prix)</p>
+      <p style="font-size:13px;color:var(--text2);margin-bottom:1rem">Résolutions Standard 720 H × 480 V ou Haute Définition 1920 H × 1080 V au choix</p>
+
+      <table class="ptable">
+        <tr><th>Films ciné</th><th>Prix</th></tr>
+        <tr><td>8mm, Super 8</td><td>0,35 $/pi</td></tr>
+        <tr><td>8mm, Super 8 sonore (1–2 pistes)</td><td>0,54 $/pi</td></tr>
+        <tr><td>16mm</td><td>0,37 $/pi</td></tr>
+        <tr><td>16mm sonore (Magnétique / Optique)</td><td>0,56 $/pi</td></tr>
+      </table>
+
+      <h3>Amélioration avec l'Intelligence Artificielle</h3>
+      <table class="ptable">
+        <tr><th>Amélioration avec Intelligence Artificielle</th><th>Supplément — Avant la conversion</th><th>Supplément — Après la conversion</th></tr>
+        <tr><td>Extrapolation AI 4K 3840 H × 2160 V</td><td>0,09 $/pi</td><td>0,12 $/pi</td></tr>
+        <tr><td>Extrapolation AI 8K 7680 H × 4320 V</td><td>0,19 $/pi</td><td>0,24 $/pi</td></tr>
+        <tr><td>Refocus et/ou Restauration couleur (AI)</td><td>0,11 $/pi</td><td>0,14 $/pi</td></tr>
+        <tr><td>Stabilisation d'image vidéo (AI)</td><td>0,09 $/pi</td><td>0,12 $/pi</td></tr>
+        <tr><td>Stabilisation d'images, Refocus et couleur</td><td>0,18 $/pi</td><td>0,24 $/pi</td></tr>
+        <tr><td>Slow motion, ralentissement vidéo (AI)</td><td>2,75 $/min</td><td>3,25 $/min</td></tr>
+      </table>
+
+      <h3>Remise des fichiers</h3>
+      <table class="ptable">
+        <tr><th>Fichiers remis au client</th><th>Sans menu</th><th>Avec menu (divisé en chapitres)</th></tr>
+        <tr><td>Envoi par internet</td><td colspan="2">sans frais</td></tr>
+        <tr><td>Sur votre clé USB, disque dur</td><td colspan="2">sans frais</td></tr>
+        <tr><td>Sur clé USB acheté chez Photo Service</td><td colspan="2">Prix de clé USB en fonction de l'espace nécessaire</td></tr>
+        <tr><td>DVD vidéo</td><td>10,00 $/ch</td><td>25,00 $/ch</td></tr>
+        <tr><td>Blue-ray</td><td>15,00 $/ch</td><td>25,00 $/ch</td></tr>
+      </table>
+
+      <h3>Services additionnels</h3>
+      <table class="ptable">
+        <tr><th>Services</th><th>Prix</th></tr>
+        <tr><td>Réparation de film ciné (collage/splice), si nécessaire</td><td>2,50 $/ch</td></tr>
+        <tr><td>Amorce de film ciné (leader) ajoutée au début du film</td><td>1,75 $/ch</td></tr>
+        <tr><td>Ajout d'un fond musical en tenant compte de l'époque et de l'évènement</td><td>0,15 $/pi suppl.</td></tr>
+        <tr><td>Nettoyage de films ciné après sinistre (calcaire, moisissures, suie et corps gras)</td><td>0,80 $/pi suppl.</td></tr>
+        <tr><td>Réparation et Restauration de films ciné en morceaux (genre casse-tête)</td><td>15,00 $/pi suppl.</td></tr>
+        <tr><td>Réduction du prix régulier par tranche de 1 000 pi. de films par format</td><td>-5 % / 1 000 pi.</td></tr>
+      </table>
+    </div>
+
+    <!-- AUDIO -->
+    <div class="price-sec" id="prix-audio">
+      <h2>🎵 Cassettes / Bandes audio *</h2>
+      <table class="ptable">
+        <tr><th>Formats</th><th>Pour lecteur CD (.cda)</th><th>Data (fichier) .wav .mp3 / Sur CD ou DVD</th></tr>
+        <tr><td>Cassette audio (standard) 4 tracks</td><td>0,50 $/min</td><td>0,38 $/min</td></tr>
+        <tr><td>Cassette audio 8 tracks</td><td>0,85 $/min</td><td>0,64 $/min</td></tr>
+        <tr><td>Roulette audio 1/4 de pouces (reel to reel)</td><td>0,75 $/min</td><td>0,56 $/min</td></tr>
+        <tr><td>Disque vinyle 33, 45 tours</td><td>0,60 $/min</td><td>0,45 $/min</td></tr>
+        <tr><td>Micro cassette</td><td>0,55 $/min</td><td>0,41 $/min</td></tr>
+        <tr><td>CD à cassette audio 4 tracks</td><td colspan="2">0,20 $/min</td></tr>
+      </table>
+    </div>
+
+    <!-- INFORMATIONS GÉNÉRALES -->
+    <div class="price-sec">
+      <h2>ℹ️ Informations générales *</h2>
+      <div class="info">
+        <ul>
+          <li>Le délai de livraison est d'environ <strong>15 jours ouvrables</strong></li>
+          <li>Estimation : <strong>25 $</strong> — si vous acceptez l'estimation, les frais seront déduits de la facture</li>
+          <li>Frais minimum seulement lorsqu'inférieur à <strong>40,00 $</strong></li>
+          <li>Frais minimum pour chaque type de travail</li>
+          <li>DVD vidéo sans menu : les films sont numérotés</li>
+          <li>DVD vidéo avec menu : titre principal inclus, les films sont numérotés et séparés en chapitres que vous pouvez sélectionner — inclus impression sur DVD et boîtier et une impression des chapitres — Titre sur chapitre de DVD avec menu : <strong>1 $/ch</strong> pour 15 caractères</li>
+          <li>Les travaux utilisant le support fourni par nos ateliers sont <strong>garantis à vie</strong> contre tout défaut de matériel</li>
+          <li>Maximum de <strong>5 DVD</strong> inclus par commande</li>
+          <li>Si vous désirez une version pour ordinateur (vous ne voulez pas de DVD vidéo), SVP apporter un disque dur portable ou une USB lors du dépôt de vos films</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cta-dark" style="border-radius:4px;margin-top:1rem">
+      <h2>Des questions sur nos tarifs?</h2>
+      <p>Nous préparons une estimation gratuite pour votre projet.</p>
+      <a class="btn-r" href="mailto:info@photoservice.ca">Demander une estimation</a>
+    </div>
+  </div></section>
+</div>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+
+<footer>
+  <div class="ft">
+    <div>
+      <div style="margin-bottom:1rem;cursor:pointer" onclick="go('accueil')">
+        <img src="https://lirp.cdn-website.com/14aefc77/dms3rep/multi/logo-photo-service-fr.svg" alt="Photo Service" style="height:40px;display:block">
+      </div>
+      <p style="font-size:13px;color:#555;line-height:1.7">Seul Photo Manager certifié au Québec.<br>Commerce familial fondé en 1937.</p>
+      <div class="fsoc">
+        <a href="https://facebook.com/photoservice.ca" target="_blank">Facebook</a>
+        <a href="https://instagram.com/photoservice.ca" target="_blank">Instagram</a>
+        <a href="https://linkedin.com/company/photoservice-ca" target="_blank">LinkedIn</a>
+        <a href="https://www.youtube.com/@photoservice3008/videos" target="_blank">YouTube</a>
+      </div>
+    </div>
+    <div>
+      <h4>Numérisation</h4>
+      <ul>
+        <li><a onclick="go('numerisation')">Aperçu</a></li>
+        <li><a onclick="go('negatifs')">Négatifs</a></li>
+        <li><a onclick="go('diapositives')">Diapositives</a></li>
+        <li><a onclick="go('video')">Bandes vidéo</a></li>
+        <li><a onclick="go('bobines')">Bobines 8mm / 16mm</a></li>
+        <li><a onclick="go('photos')">Photographies</a></li>
+        <li><a onclick="go('albums')">Albums &amp; Scrapbook</a></li>
+        <li><a onclick="go('lettres')">Lettres &amp; Documents</a></li>
+        <li><a onclick="go('cassettes')">Audio</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Infos utiles</h4>
+      <ul>
+        <li><a onclick="go('souvenirs')">Préserver vos souvenirs</a></li>
+        <li><a onclick="go('guide')">Guide de préparation</a></li>
+        <li><a onclick="go('prix')">Liste de prix</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:5148492291">514.849.2291</a></li>
+        <li><a href="tel:18776746868">1.877.674.6868 (sans frais)</a></li>
+        <li><a href="mailto:info@photoservice.ca">info@photoservice.ca</a></li>
+        <li style="color:#444;margin-top:.5rem;font-size:12px;list-style:none">11h–17h · Lundi au Vendredi<br>Centre-ville Montréal</li>
+      </ul>
+    </div>
+  </div>
+  <div class="fb">© 2025 Photo Service · Tous droits réservés &nbsp;|&nbsp; <a href="#" style="color:#444">Politique de confidentialité</a></div>
+</footer>
+
+<script>
+var pageMetas = {
+  accueil: {title: "Photo Service Montréal | Numérisation & Archivage", desc: "Seul Photo Manager certifié au Québec. Numérisation de photos, négatifs, diapositives, films et vidéos. Commerce familial depuis 1937."},
+  numerisation: {title: "Numérisation et transfert | Photo Service Montréal", desc: "Numérisation et transfert | Photo Service Montréal"},
+  souvenirs: {title: "Préserver vos souvenirs | Photo Service Montréal", desc: "Organisez et préservez vos photos de famille. Seul Photo Manager certifié au Québec."},
+  guide: {title: "Préparation des numérisations | Photo Service Montréal", desc: "Guide d'organisation de vos photos en 5 phases : collecte, tri, numérisation, sauvegarde et partage."},
+  prix: {title: "Transfert numérisation prix | Photo Service Montréal", desc: "Numérisez vos photos et films avec Photo Service. Découvrez nos tarifs avantageux."},
+  negatifs: {title: "Numérisation de négatifs | Photo Service Montréal", desc: "Protégez vos trésors en numérisant vos vieux négatifs. Scans haute résolution, DVD/CD, clé USB et téléchargement numérique."},
+  diapositives: {title: "Numérisation de diapositives | Photo Service Montréal", desc: "Protégez vos images en les numérisant. Découvrez nos options de formats et médias disponibles."},
+  video: {title: "Bandes vidéo et films maison | Photo Service Montréal", desc: "Transformez vos bandes vidéo en fichiers numériques. Nos techniciens inspectent, réparent et nettoient vos bandes avant de les transférer."},
+  bobines: {title: "Bobines de film maison | Photo Service Montréal", desc: "Numérisation de bobines 8mm et 16mm. Transfert en haute définition avec amélioration par intelligence artificielle."},
+  photos: {title: "Numérisation de photo | Photo Service Montréal", desc: "Numérisez vos anciennes photos en haute résolution. Protégez vos souvenirs avec notre service économique."},
+  albums: {title: "Albums photos et pages scrapbook | Photo Service Montréal", desc: "Protégez vos images avec des albums photos et pages scrapbook. Numérisez et partagez facilement vos souvenirs."},
+  lettres: {title: "Lettres, recettes et certificats | Photo Service Montréal", desc: "Numérisation de documents pour un héritage numérique. Options de livraison sur clé USB, DVD, ou téléchargement numérique."},
+  cassettes: {title: "Rubans cassette et enregistrements | Photo Service Montréal", desc: "Convertissez vos cassettes et enregistrements audio en format numérique. Options multimédias disponibles."}
+};
+
+function updateMeta(id) {
+  var m = pageMetas[id] || pageMetas.accueil;
+  document.title = m.title;
+  var dm = document.querySelector('meta[name="description"]');
+  if (dm) dm.setAttribute('content', m.desc);
+}
+
+function go(id) {
+  updateMeta(id);
+  var pages = document.querySelectorAll('.pg');
+  for (var i = 0; i < pages.length; i++) { pages[i].classList.remove('on'); }
+  var el = document.getElementById('pg-' + id);
+  if (el) { el.classList.add('on'); }
+  else { document.getElementById('pg-accueil').classList.add('on'); }
+  var navlinks = document.querySelectorAll('.nav-links a');
+  for (var j = 0; j < navlinks.length; j++) { navlinks[j].classList.remove('active'); }
+  var na = document.getElementById('n-' + id);
+  if (na) { na.classList.add('active'); }
+  window.scrollTo(0, 0);
+}
+
+function scrollPrix(id) {
+  go('prix');
+  setTimeout(function() {
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({behavior: 'smooth'});
+  }, 150);
+}
+
+function toggleFaq(el) {
+  var a = el.querySelector('.faq-a');
+  var q = el.querySelector('.faq-q');
+  var open = a.style.display === 'block';
+  var allA = document.querySelectorAll('.faq-a');
+  var allI = document.querySelectorAll('.faq-item');
+  for (var k = 0; k < allA.length; k++) { allA[k].style.display = 'none'; }
+  for (var k = 0; k < allI.length; k++) {
+    allI[k].style.background = '';
+    var qq = allI[k].querySelector('.faq-q');
+    if (qq) qq.style.color = '';
+  }
+  if (!open) {
+    a.style.display = 'block';
+    el.style.background = '#fff8f8';
+    q.style.color = 'var(--red)';
+  }
+}
+
+window.onload = function() {
+  document.querySelectorAll('.faq-item').forEach(function(el) {
+    el.onclick = function() { toggleFaq(el); };
+  });
+};
+</script>
+</body>
+</html>
