@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Page d'accueil FR -->
+  <url>
+    <loc>https://photoservice.ca/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://photoservice.ca/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://photoservice.ca/photoservice-en.html"/>
+    <lastmod>2025-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Page d'accueil EN -->
+  <url>
+    <loc>https://photoservice.ca/photoservice-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://photoservice.ca/photoservice-en.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://photoservice.ca/"/>
+    <lastmod>2025-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+</urlset>
